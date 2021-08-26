@@ -25,14 +25,15 @@ class MobileView extends GetView<HomeController> {
                   children: [
                     TextSpan(text: "Lorem ipsum dolor "),
                     TextSpan(
-                        text: "sit", style: GoogleFonts.roboto(color: active)),
+                        text: "sit",
+                        style: GoogleFonts.montserrat(color: active)),
                     TextSpan(text: " amet, consectetur "),
                     TextSpan(
                         text: "adipiscing elit.",
-                        style: GoogleFonts.roboto(color: active)),
+                        style: GoogleFonts.montserrat(color: active)),
                     TextSpan(text: " Suspendisse id sapien."),
                   ],
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.montserrat(
                     fontWeight: FontWeight.bold,
                     fontSize: 28,
                   ),
@@ -49,7 +50,7 @@ class MobileView extends GetView<HomeController> {
           child: Text(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet eros id ligula semper, et viverra massa imperdiet. Maecenas commodo vestibulum ante, in ultricies diam mattis quis. Cras et purus at justo vestibulum interdum. Nunc dignissim blandit libero, sollicitudin fermentum libero feugiat eget.",
             textAlign: TextAlign.center,
-            style: GoogleFonts.roboto(letterSpacing: 1.5, height: 1.5),
+            style: GoogleFonts.montserrat(letterSpacing: 1.5, height: 1.5),
           ),
         ),
         SizedBox(

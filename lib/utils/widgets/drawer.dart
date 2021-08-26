@@ -19,7 +19,7 @@ class SideMenu extends StatelessWidget {
                 onTap: () {},
                 child: Text(
                   "Pricing",
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.montserrat(
                     fontSize: 22,
                     color: Colors.white,
                   ),
@@ -33,7 +33,7 @@ class SideMenu extends StatelessWidget {
                 onTap: () {},
                 child: Text(
                   "Login",
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.montserrat(
                     fontSize: 22,
                     color: Colors.white,
                   ),
@@ -47,7 +47,7 @@ class SideMenu extends StatelessWidget {
                 onTap: () {},
                 child: Text(
                   "Register",
-                  style: GoogleFonts.roboto(
+                  style: GoogleFonts.montserrat(
                     fontSize: 22,
                     color: Colors.white,
                   ),
@@ -58,8 +58,8 @@ class SideMenu extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: Text(
                     "Copyright 2021 | ReQueriment",
-                    style:
-                        GoogleFonts.roboto(color: Colors.white, fontSize: 14),
+                    style: GoogleFonts.montserrat(
+                        color: Colors.white, fontSize: 14),
                   ),
                 ),
               )
