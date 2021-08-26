@@ -22,8 +22,12 @@ class NavBar extends StatelessWidget {
           children: [
             SizedBox(width: 20),
             Text(
-              "Re-Quirement",
-              style: GoogleFonts.tradeWinds(fontSize: 20),
+              "ReQuirement",
+              style: GoogleFonts.montserrat(
+                color: Colors.black87,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Expanded(
               child: Row(
@@ -45,7 +49,7 @@ class NavBar extends StatelessWidget {
                           SizedBox(height: 12),
                           Text(
                             "Pricing",
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.montserrat(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: _isHovering[0] ? active : disable,
@@ -87,7 +91,7 @@ class NavBar extends StatelessWidget {
                           SizedBox(height: 12),
                           Text(
                             "Log In",
-                            style: GoogleFonts.roboto(
+                            style: GoogleFonts.montserrat(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: _isHovering[1] ? active : disable,
@@ -116,7 +120,12 @@ class NavBar extends StatelessWidget {
                   SizedBox(
                     width: screenSize.width / 20,
                   ),
-                  CustomButtom(text: "Register"),
+                  CustomButtom(
+                    text: "Register",
+                    function: () {
+                      print("button was pressed");
+                    },
+                  ),
                   SizedBox(
                     width: screenSize.width / 40,
                   )

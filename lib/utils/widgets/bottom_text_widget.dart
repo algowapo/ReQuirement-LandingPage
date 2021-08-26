@@ -18,11 +18,11 @@ class BottomText extends StatelessWidget {
           ),
           TextSpan(
             text: "$secondaryText \n",
-            style:
-                GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w300),
+            style: GoogleFonts.montserrat(
+                fontSize: 16, fontWeight: FontWeight.w300),
           )
         ],
-        style: GoogleFonts.roboto(
+        style: GoogleFonts.montserrat(
           fontSize: 58,
           fontWeight: FontWeight.bold,
         ),

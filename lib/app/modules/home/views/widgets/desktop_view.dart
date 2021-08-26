@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:landing_page/app/modules/home/controllers/home_controller.dart';
-import 'package:landing_page/utils/helpers/responsive.dart';
 import 'package:landing_page/utils/helpers/style.dart';
 import 'package:landing_page/utils/widgets/bottom_text_widget.dart';
 import 'package:landing_page/utils/widgets/custom_button.dart';
@@ -13,123 +13,268 @@ class DesktopView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Container(
-        constraints: BoxConstraints(maxWidth: 1440),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 40),
-              width: screenSize.width / 2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(bottom: 15),
-                    child: Text(
-                      "Lorem ipsum dolor sit amet.",
-                      style: GoogleFonts.roboto(
+      constraints: BoxConstraints(maxWidth: screenSize.width),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 100),
+            width: screenSize.width / 2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(
+                    bottom: 50,
+                    top: 10,
+                  ),
+                  child: Text(
+                    "ReQuirement",
+                    style: GoogleFonts.montserrat(
+                      color: Colors.black87,
+                      fontSize: 80,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(text: "Generar tus "),
+                      TextSpan(
+                        text: "requerimientos ",
+                        style: GoogleFonts.montserrat(
                           color: active,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextSpan(text: "nunca fue tan "),
+                      TextSpan(
+                        text: "fácil ",
+                        style: GoogleFonts.montserrat(
+                          color: active,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextSpan(text: "y "),
+                      TextSpan(
+                        text: "sencillo.",
+                        style: GoogleFonts.montserrat(
+                          color: active,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                    style: GoogleFonts.montserrat(
+                      fontWeight: FontWeight.normal,
+                      fontSize: 38,
                     ),
                   ),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(text: "Lorem ipsum dolor "),
-                        TextSpan(
-                            text: "sit",
-                            style: GoogleFonts.roboto(color: active)),
-                        TextSpan(text: " amet, consectetur "),
-                        TextSpan(
-                            text: "adipiscing elit.",
-                            style: GoogleFonts.roboto(color: active)),
-                        TextSpan(text: " Suspendisse id sapien."),
-                      ],
-                      style: GoogleFonts.roboto(
-                          fontWeight: FontWeight.bold, fontSize: 38),
+                ),
+                Visibility(
+                  child: Text(
+                    "",
+                    style: GoogleFonts.montserrat(
+                      fontSize: 20,
+                      letterSpacing: 1.1,
+                      height: 1.5,
                     ),
                   ),
-                  Visibility(
-                    child: Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet eros id ligula semper, et viverra massa imperdiet. Maecenas commodo vestibulum ante, in ultricies diam mattis quis. Cras et purus at justo vestibulum interdum. Nunc dignissim blandit libero, sollicitudin fermentum libero feugiat eget.",
-                      style: GoogleFonts.roboto(
-                          fontSize: 20, letterSpacing: 1.5, height: 1.5),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(40),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(.1),
-                            offset: Offset(0, 40),
-                            blurRadius: 80),
-                      ],
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: screenSize.width / 4,
-                          padding: EdgeInsets.only(left: 8),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                icon: Icon(Icons.email_outlined),
-                                hintText: "Enter your email",
-                                border: InputBorder.none),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  padding: EdgeInsets.all(8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Directionality(
+                        textDirection: TextDirection.rtl,
+                        child: ElevatedButton.icon(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                              active,
+                            ),
+                            padding: MaterialStateProperty.all<EdgeInsets>(
+                              EdgeInsets.symmetric(
+                                vertical: 20,
+                                horizontal: 30,
+                              ),
+                            ),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
+                              ),
+                            ),
                           ),
+                          label: Text(
+                            "Empieza ya",
+                            style: GoogleFonts.montserrat(
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white,
+                            ),
+                          ),
+                          icon: Icon(
+                            Icons.arrow_back,
+                          ),
+                          onPressed: () {},
                         ),
-                        CustomButtom(text: "Get Started")
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: screenSize.height / 14,
+                ),
+                SizedBox(
+                  height: screenSize.height / 14,
+                ),
+                Visibility(
+                  visible: screenSize.height > 700,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              "assets/images/note.png",
+                              width: screenSize.width / 20,
+                            ),
+                            Container(
+                              width: screenSize.width / 8,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                top: 20,
+                              ),
+                              child: Text(
+                                "Mejora tus requerimentos",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: screenSize.width / 8,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                top: 20,
+                              ),
+                              child: Text(
+                                "Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              "assets/images/time-management.png",
+                              width: screenSize.width / 20,
+                            ),
+                            Container(
+                              width: screenSize.width / 8,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                top: 20,
+                              ),
+                              child: Text(
+                                "Mejora tus requerimentos",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: screenSize.width / 8,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                top: 20,
+                              ),
+                              child: Text(
+                                "Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              "assets/images/list.png",
+                              width: screenSize.width / 20,
+                            ),
+                            Container(
+                              width: screenSize.width / 8,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                top: 20,
+                              ),
+                              child: Text(
+                                "Mejora tus requerimentos",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: screenSize.width / 8,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                top: 20,
+                              ),
+                              child: Text(
+                                "Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar",
+                                style: GoogleFonts.montserrat(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  Visibility(
-                    visible: screenSize.height > 700,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        BottomText(
-                          mainText: "1k+",
-                          secondaryText: "Projects Created",
-                        ),
-                        BottomText(
-                          mainText: "1k+",
-                          secondaryText: "Projects Created",
-                        ),
-                        BottomText(
-                          mainText: "1k+",
-                          secondaryText: "Projects Created",
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 40),
-              width: screenSize.width / 2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Image.asset(
-                    "assets/images/img1.png",
-                    width: screenSize.width / 1.9,
-                  ),
-                ],
-              ),
-            )
-          ],
-        ));
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 40),
+            width: screenSize.width / 2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  "assets/images/banner1.svg",
+                  width: screenSize.width / 3,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
