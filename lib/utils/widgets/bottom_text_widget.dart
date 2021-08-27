@@ -14,10 +14,10 @@ class BottomText extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-            text: "$mainText \n",
+            text: '$mainText \n',
           ),
           TextSpan(
-            text: "$secondaryText \n",
+            text: '$secondaryText \n',
             style: GoogleFonts.montserrat(
                 fontSize: 16, fontWeight: FontWeight.w300),
           )

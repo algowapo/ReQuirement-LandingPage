@@ -23,15 +23,15 @@ class MobileView extends GetView<HomeController> {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   children: [
-                    TextSpan(text: "Lorem ipsum dolor "),
+                    TextSpan(text: 'Lorem ipsum dolor '),
                     TextSpan(
-                        text: "sit",
+                        text: 'sit',
                         style: GoogleFonts.montserrat(color: active)),
-                    TextSpan(text: " amet, consectetur "),
+                    TextSpan(text: ' amet, consectetur '),
                     TextSpan(
-                        text: "adipiscing elit.",
+                        text: 'adipiscing elit.',
                         style: GoogleFonts.montserrat(color: active)),
-                    TextSpan(text: " Suspendisse id sapien."),
+                    TextSpan(text: ' Suspendisse id sapien.'),
                   ],
                   style: GoogleFonts.montserrat(
                     fontWeight: FontWeight.bold,
@@ -48,7 +48,7 @@ class MobileView extends GetView<HomeController> {
         Container(
           constraints: BoxConstraints(maxWidth: 450),
           child: Text(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet eros id ligula semper, et viverra massa imperdiet. Maecenas commodo vestibulum ante, in ultricies diam mattis quis. Cras et purus at justo vestibulum interdum. Nunc dignissim blandit libero, sollicitudin fermentum libero feugiat eget.",
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet eros id ligula semper, et viverra massa imperdiet. Maecenas commodo vestibulum ante, in ultricies diam mattis quis. Cras et purus at justo vestibulum interdum. Nunc dignissim blandit libero, sollicitudin fermentum libero feugiat eget.',
             textAlign: TextAlign.center,
             style: GoogleFonts.montserrat(letterSpacing: 1.5, height: 1.5),
           ),
@@ -79,11 +79,11 @@ class MobileView extends GetView<HomeController> {
                 child: TextField(
                   decoration: InputDecoration(
                       icon: Icon(Icons.email_outlined),
-                      hintText: "Email",
+                      hintText: 'Email',
                       border: InputBorder.none),
                 ),
               ),
-              CustomButtom(text: "Get Started")
+              CustomButtom(text: 'Get Started')
             ],
           ),
         ),

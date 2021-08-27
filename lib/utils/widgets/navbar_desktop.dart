@@ -22,7 +22,7 @@ class NavBar extends StatelessWidget {
           children: [
             SizedBox(width: 20),
             Text(
-              "ReQuirement",
+              'ReQuirement',
               style: GoogleFonts.montserrat(
                 color: Colors.black87,
                 fontSize: 20,
@@ -48,7 +48,7 @@ class NavBar extends StatelessWidget {
                         children: [
                           SizedBox(height: 12),
                           Text(
-                            "Pricing",
+                            'Pricing',
                             style: GoogleFonts.montserrat(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -90,7 +90,7 @@ class NavBar extends StatelessWidget {
                         children: [
                           SizedBox(height: 12),
                           Text(
-                            "Log In",
+                            'Log In',
                             style: GoogleFonts.montserrat(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -121,9 +121,9 @@ class NavBar extends StatelessWidget {
                     width: screenSize.width / 20,
                   ),
                   CustomButtom(
-                    text: "Register",
+                    text: 'Register',
                     function: () {
-                      print("button was pressed");
+                      print('button was pressed');
                     },
                   ),
                   SizedBox(
