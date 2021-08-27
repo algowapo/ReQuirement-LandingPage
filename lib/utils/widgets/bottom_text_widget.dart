@@ -14,15 +14,15 @@ class BottomText extends StatelessWidget {
       text: TextSpan(
         children: [
           TextSpan(
-            text: "$mainText \n",
+            text: '$mainText \n',
           ),
           TextSpan(
-            text: "$secondaryText \n",
-            style:
-                GoogleFonts.roboto(fontSize: 16, fontWeight: FontWeight.w300),
+            text: '$secondaryText \n',
+            style: GoogleFonts.montserrat(
+                fontSize: 16, fontWeight: FontWeight.w300),
           )
         ],
-        style: GoogleFonts.roboto(
+        style: GoogleFonts.montserrat(
           fontSize: 58,
           fontWeight: FontWeight.bold,
         ),
