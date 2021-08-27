@@ -1,1 +1,1 @@
-const mainParagraph = "";
+const mainParagraph = '';
