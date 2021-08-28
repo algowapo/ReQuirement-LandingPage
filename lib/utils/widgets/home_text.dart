@@ -4,6 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeText extends StatelessWidget {
+  final double? lineHeight;
+
+  const HomeText({Key? key, this.lineHeight}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -15,11 +18,11 @@ class HomeText extends StatelessWidget {
             'Great digital agency since 2010',
             style: GoogleFonts.montserrat(
               color: Colors.black87,
-              fontSize: screenSize.height / 20,
+              fontSize: screenSize.height * .04,
               fontWeight: FontWeight.bold,
             ),
-            stepGranularity: 1,
-            maxLines: 2,
+            minFontSize: 25,
+            maxLines: 3,
           ),
           SizedBox(
             height: 30,
@@ -28,12 +31,10 @@ class HomeText extends StatelessWidget {
             'Creative and professional agency',
             style: GoogleFonts.montserrat(
               color: Color(0xFF99a1ad),
-              fontSize: screenSize.height / 30,
+              fontSize: screenSize.height * .025,
               fontWeight: FontWeight.bold,
             ),
-            minFontSize: 16,
-            stepGranularity: 1,
-            maxLines: 2,
+            maxLines: 3,
           ),
           SizedBox(
             height: 20,
@@ -44,9 +45,9 @@ class HomeText extends StatelessWidget {
               fontSize: screenSize.height / 100,
               fontWeight: FontWeight.normal,
               color: Color(0xFF99a1ad),
-              height: screenSize.height / 400,
+              height: lineHeight,
             ),
-            minFontSize: 16,
+            minFontSize: 14,
             stepGranularity: 1,
             maxLines: 5,
           ),
