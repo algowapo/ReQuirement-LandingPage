@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class BottomBadge extends StatelessWidget {
   final String? mainText;
@@ -30,12 +32,14 @@ class BottomBadge extends StatelessWidget {
             margin: EdgeInsets.only(
               top: 20,
             ),
-            child: Text(
+            child: AutoSizeText(
               mainText!,
               style: GoogleFonts.montserrat(
-                fontSize: 20,
+                fontSize: screenSize.height / 35,
                 fontWeight: FontWeight.bold,
               ),
+              stepGranularity: 1,
+              maxLines: 2,
             ),
           ),
           Container(
@@ -44,14 +48,16 @@ class BottomBadge extends StatelessWidget {
             margin: EdgeInsets.only(
               top: 20,
             ),
-            child: Text(
+            child: AutoSizeText(
               secondaryText!,
               style: GoogleFonts.montserrat(
-                fontSize: 14,
+                fontSize: screenSize.height / 100,
                 fontWeight: FontWeight.normal,
                 color: Color(0xFF99a1ad),
-                height: 1.8,
+                height: screenSize.height / 400,
               ),
+              minFontSize: 16,
+              stepGranularity: 1,
             ),
           ),
         ],

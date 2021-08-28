@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:landing_page/app/modules/home/controllers/home_controller.dart';
 import 'package:landing_page/utils/widgets/bottom_badge.dart';
@@ -24,7 +25,7 @@ class DesktopView extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                padding: EdgeInsets.only(left: 200),
+                padding: EdgeInsets.only(left: screenSize.width / 10),
                 width: screenSize.width / 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -35,13 +36,16 @@ class DesktopView extends GetView<HomeController> {
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child: Text(
+                      child: AutoSizeText(
                         'ReQuirement',
                         style: GoogleFonts.montserrat(
                           color: Colors.black87,
-                          fontSize: 80,
+                          fontSize: screenSize.height / 10,
                           fontWeight: FontWeight.bold,
                         ),
+                        minFontSize: 60,
+                        stepGranularity: 1,
+                        maxLines: 1,
                       ),
                     ),
                     SizedBox(
@@ -73,7 +77,8 @@ class DesktopView extends GetView<HomeController> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 40),
+                padding:
+                    EdgeInsets.symmetric(horizontal: screenSize.width / 10),
                 width: screenSize.width / 2,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -95,7 +100,9 @@ class DesktopView extends GetView<HomeController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 200, vertical: 100),
+              padding: EdgeInsets.symmetric(
+                  horizontal: screenSize.width / 10,
+                  vertical: screenSize.width / 10),
               width: screenSize.width,
               child: Visibility(
                 visible: screenSize.height > 700,
@@ -133,13 +140,16 @@ class DesktopView extends GetView<HomeController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 200),
-              width: screenSize.width / 2,
+              padding: EdgeInsets.only(left: screenSize.width / 10),
+              width: screenSize.width / 2.5,
               child: HomeText(),
             ),
+            SizedBox(
+              width: screenSize.width / 5,
+            ),
             Container(
-              padding: EdgeInsets.only(right: 200),
-              width: screenSize.width / 2,
+              padding: EdgeInsets.only(right: screenSize.width / 10),
+              width: screenSize.width / 2.5,
               child: HomeImage(),
             ),
           ],
