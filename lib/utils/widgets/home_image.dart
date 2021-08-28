@@ -14,7 +14,8 @@ class HomeImage extends StatelessWidget {
           Container(
             child: Image.asset(
               'assets/images/business-man.jpg',
-              width: screenSize.width / 4,
+              height: screenSize.height / 3,
+              fit: BoxFit.cover,
             ),
             decoration: BoxDecoration(
               boxShadow: [
