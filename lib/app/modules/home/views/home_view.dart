@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:landing_page/app/modules/home/views/widgets/desktop_view.dart';
+import 'package:landing_page/app/modules/home/views/widgets/medium_view.dart';
 import 'package:landing_page/app/modules/home/views/widgets/mobile_view.dart';
 import 'package:landing_page/utils/helpers/responsive.dart';
 import 'package:landing_page/utils/helpers/style.dart';
@@ -30,6 +31,7 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: bgColor,
       body: ResponsiveWidget(
         largeScreen: DesktopView(),
+        mediumScreen: MediumView(),
         smallScreen: MobileView(),
       ),
     );

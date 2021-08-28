@@ -12,7 +12,7 @@ import 'package:landing_page/utils/widgets/home_image.dart';
 import 'package:landing_page/utils/widgets/home_subtitle.dart';
 import 'package:landing_page/utils/widgets/home_text.dart';
 
-class DesktopView extends GetView<HomeController> {
+class MediumView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -20,7 +20,29 @@ class DesktopView extends GetView<HomeController> {
       constraints: BoxConstraints(maxWidth: screenSize.width),
       child: ListView(children: [
         Container(
-          constraints: BoxConstraints(minHeight: screenSize.height / 1.6),
+          padding: EdgeInsets.only(left: screenSize.width / 10),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: screenSize.height / 4,
+              ),
+              AutoSizeText(
+                'ReQuirement',
+                style: GoogleFonts.montserrat(
+                  color: Colors.black87,
+                  fontSize: screenSize.height / 13,
+                  fontWeight: FontWeight.bold,
+                ),
+                minFontSize: 60,
+                stepGranularity: 1,
+                maxLines: 1,
+              ),
+            ],
+          ),
+        ),
+        Container(
+          constraints: BoxConstraints(minHeight: screenSize.height / 2.5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -31,26 +53,6 @@ class DesktopView extends GetView<HomeController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 100,
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: AutoSizeText(
-                        'ReQuirement',
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black87,
-                          fontSize: screenSize.height / 10,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        minFontSize: 60,
-                        stepGranularity: 1,
-                        maxLines: 1,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
                     Padding(
                       padding: const EdgeInsets.only(right: 30),
                       child: HomeSubtitle(),
@@ -81,14 +83,13 @@ class DesktopView extends GetView<HomeController> {
                     EdgeInsets.symmetric(horizontal: screenSize.width / 10),
                 width: screenSize.width / 2,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 100,
-                    ),
                     SvgPicture.asset(
                       'assets/images/banner1.svg',
                       width: screenSize.width / 3,
+                      fit: BoxFit.fill,
                     ),
                   ],
                 ),
@@ -101,40 +102,40 @@ class DesktopView extends GetView<HomeController> {
           children: [
             Container(
               padding: EdgeInsets.symmetric(
-                  horizontal: screenSize.width / 10,
+                  horizontal: screenSize.width / 15,
                   vertical: screenSize.width / 10),
               width: screenSize.width,
               child: Visibility(
                 visible: screenSize.height > 700,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BottomBadge(
                       mainText: 'Mejora tus requerimientos',
                       secondaryText:
                           'Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar',
                       iconRoute: 'assets/images/note.png',
-                      iconWidth: screenSize.width / 20,
-                      containerWidth: screenSize.width / 8,
-                      lineHeight: screenSize.height / 500,
+                      iconWidth: screenSize.width / 15,
+                      containerWidth: screenSize.width / 5,
+                      lineHeight: screenSize.height / 550,
                     ),
                     BottomBadge(
                       mainText: 'Mejora tus requerimientos',
                       secondaryText:
                           'Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar',
                       iconRoute: 'assets/images/list.png',
-                      iconWidth: screenSize.width / 20,
-                      containerWidth: screenSize.width / 8,
-                      lineHeight: screenSize.height / 500,
+                      iconWidth: screenSize.width / 15,
+                      containerWidth: screenSize.width / 5,
+                      lineHeight: screenSize.height / 550,
                     ),
                     BottomBadge(
                       mainText: 'Mejora tus requerimientos',
                       secondaryText:
                           'Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar',
                       iconRoute: 'assets/images/time-management.png',
-                      iconWidth: screenSize.width / 20,
-                      containerWidth: screenSize.width / 8,
-                      lineHeight: screenSize.height / 500,
+                      iconWidth: screenSize.width / 15,
+                      containerWidth: screenSize.width / 5,
+                      lineHeight: screenSize.height / 550,
                     ),
                   ],
                 ),
@@ -149,18 +150,19 @@ class DesktopView extends GetView<HomeController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.only(left: screenSize.width * .1),
-              width: screenSize.width / 2.5,
+              padding: EdgeInsets.only(left: screenSize.width * .05),
+              width: screenSize.width * .45,
               child: HomeText(
-                lineHeight: screenSize.height * .0025,
+                lineHeight: screenSize.height * .002,
               ),
             ),
             SizedBox(
-              width: screenSize.width / 5,
+              width: screenSize.width * .1,
             ),
             Container(
-              padding: EdgeInsets.only(right: screenSize.width * .1),
-              width: screenSize.width / 2.5,
+              padding: EdgeInsets.only(
+                  right: screenSize.width * .05, top: screenSize.height * .01),
+              width: screenSize.width * .45,
               child: HomeImage(),
             ),
           ],
