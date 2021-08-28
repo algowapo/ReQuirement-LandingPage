@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:landing_page/utils/helpers/style.dart';
 
 class HomeSubtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
+    var screenSize = MediaQuery.of(context).size;
+    return AutoSizeText.rich(
+      TextSpan(
         children: [
           TextSpan(text: 'Generar tus '),
           TextSpan(
@@ -35,9 +39,11 @@ class HomeSubtitle extends StatelessWidget {
         ],
         style: GoogleFonts.montserrat(
           fontWeight: FontWeight.normal,
-          fontSize: 38,
+          fontSize: screenSize.height / 25,
         ),
       ),
+      stepGranularity: 1,
+      maxLines: 3,
     );
   }
 }
