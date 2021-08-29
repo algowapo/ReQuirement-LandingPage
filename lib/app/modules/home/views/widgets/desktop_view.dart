@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:landing_page/app/modules/home/controllers/home_controller.dart';
-import 'package:landing_page/utils/widgets/bottom_badge.dart';
+import 'package:landing_page/app/modules/home/models/badge_model.dart';
+import 'package:landing_page/utils/widgets/badges/badge.dart';
 import 'package:landing_page/utils/widgets/custom_icon_button.dart';
-import 'package:landing_page/utils/widgets/home_image.dart';
-import 'package:landing_page/utils/widgets/home_subtitle.dart';
-import 'package:landing_page/utils/widgets/home_text.dart';
+import 'package:landing_page/utils/widgets/bottom/bottom_image.dart';
+import 'package:landing_page/utils/widgets/main/main_subtitle.dart';
+import 'package:landing_page/utils/widgets/bottom/bottom_text.dart';
+import 'package:landing_page/utils/widgets/main/main_title.dart';
 
 class DesktopView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+    double badgeContainerSize = screenSize.width * .15;
+    double badgeIconSize = screenSize.width * .05;
+    double badgeLineHeight = screenSize.height * .002;
     return Container(
       constraints: BoxConstraints(maxWidth: screenSize.width),
       child: ListView(children: [
@@ -36,16 +39,8 @@ class DesktopView extends GetView<HomeController> {
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child: AutoSizeText(
-                        'ReQuirement',
-                        style: GoogleFonts.montserrat(
-                          color: Colors.black87,
-                          fontSize: screenSize.height / 10,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        minFontSize: 60,
-                        stepGranularity: 1,
-                        maxLines: 1,
+                      child: MainTitle(
+                        fontSize: screenSize.height * .1,
                       ),
                     ),
                     SizedBox(
@@ -53,7 +48,9 @@ class DesktopView extends GetView<HomeController> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 30),
-                      child: HomeSubtitle(),
+                      child: MainSubtitle(
+                        fontSize: screenSize.height * .03,
+                      ),
                     ),
                     SizedBox(
                       height: 40,
@@ -92,58 +89,33 @@ class DesktopView extends GetView<HomeController> {
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: screenSize.width / 10,
-                  vertical: screenSize.width / 10),
-              width: screenSize.width,
-              child: Visibility(
-                visible: screenSize.height > 700,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    BottomBadge(
-                      mainText: 'Mejora tus requerimientos',
-                      secondaryText:
-                          'Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar',
-                      iconRoute: 'assets/images/note.png',
-                      iconWidth: screenSize.width / 20,
-                      containerWidth: screenSize.width / 8,
-                      lineHeight: screenSize.height / 500,
-                    ),
-                    BottomBadge(
-                      mainText: 'Mejora tus requerimientos',
-                      secondaryText:
-                          'Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar',
-                      iconRoute: 'assets/images/list.png',
-                      iconWidth: screenSize.width / 20,
-                      containerWidth: screenSize.width / 8,
-                      lineHeight: screenSize.height / 500,
-                    ),
-                    BottomBadge(
-                      mainText: 'Mejora tus requerimientos',
-                      secondaryText:
-                          'Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar',
-                      iconRoute: 'assets/images/time-management.png',
-                      iconWidth: screenSize.width / 20,
-                      containerWidth: screenSize.width / 8,
-                      lineHeight: screenSize.height / 500,
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-        SizedBox(
-          height: 50,
+        Container(
+          padding: EdgeInsets.symmetric(
+              horizontal: screenSize.width * .12,
+              vertical: screenSize.width / 10),
+          width: screenSize.width,
+          height: screenSize.height * .8,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: badgesList.length,
+            separatorBuilder: (BuildContext context, int index) => SizedBox(
+              width: screenSize.width * .15,
+            ),
+            itemBuilder: (context, index) {
+              return Badge(
+                mainText: badgesList[index].mainText,
+                secondaryText: badgesList[index].secondaryText,
+                iconRoute: badgesList[index].iconRoute,
+                iconWidth: badgeIconSize,
+                containerWidth: badgeContainerSize,
+                lineHeight: badgeLineHeight,
+              );
+            },
+          ),
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +123,7 @@ class DesktopView extends GetView<HomeController> {
             Container(
               padding: EdgeInsets.only(left: screenSize.width * .1),
               width: screenSize.width / 2.5,
-              child: HomeText(
+              child: BottomText(
                 lineHeight: screenSize.height * .0025,
               ),
             ),
@@ -161,7 +133,7 @@ class DesktopView extends GetView<HomeController> {
             Container(
               padding: EdgeInsets.only(right: screenSize.width * .1),
               width: screenSize.width / 2.5,
-              child: HomeImage(),
+              child: BottomImage(),
             ),
           ],
         ),
