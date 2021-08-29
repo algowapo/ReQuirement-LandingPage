@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:landing_page/app/modules/home/controllers/home_controller.dart';
-import 'package:landing_page/utils/widgets/bottom_badge.dart';
+import 'package:landing_page/app/modules/home/models/badge_model.dart';
+import 'package:landing_page/utils/widgets/badges/badge.dart';
 import 'package:landing_page/utils/widgets/custom_icon_button.dart';
-import 'package:landing_page/utils/widgets/home_image.dart';
-import 'package:landing_page/utils/widgets/home_subtitle.dart';
-import 'package:landing_page/utils/widgets/home_text.dart';
+import 'package:landing_page/utils/widgets/bottom/bottom_image.dart';
+import 'package:landing_page/utils/widgets/main/main_subtitle.dart';
+import 'package:landing_page/utils/widgets/bottom/bottom_text.dart';
+import 'package:landing_page/utils/widgets/main/main_title.dart';
 
 class MediumView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
+    double badgeContainerSize = screenSize.width * .2;
+    double badgeIconSize = screenSize.width * .06;
+    double badgeLineHeight = screenSize.height * .002;
     return Container(
       constraints: BoxConstraints(maxWidth: screenSize.width),
       child: ListView(children: [
@@ -27,16 +30,8 @@ class MediumView extends GetView<HomeController> {
               SizedBox(
                 height: screenSize.height / 4,
               ),
-              AutoSizeText(
-                'ReQuirement',
-                style: GoogleFonts.montserrat(
-                  color: Colors.black87,
-                  fontSize: screenSize.height / 13,
-                  fontWeight: FontWeight.bold,
-                ),
-                minFontSize: 60,
-                stepGranularity: 1,
-                maxLines: 1,
+              MainTitle(
+                fontSize: screenSize.height * .08,
               ),
             ],
           ),
@@ -55,7 +50,9 @@ class MediumView extends GetView<HomeController> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 30),
-                      child: HomeSubtitle(),
+                      child: MainSubtitle(
+                        fontSize: screenSize.height * .03,
+                      ),
                     ),
                     SizedBox(
                       height: 40,
@@ -97,54 +94,29 @@ class MediumView extends GetView<HomeController> {
             ],
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: screenSize.width / 15,
-                  vertical: screenSize.width / 10),
-              width: screenSize.width,
-              child: Visibility(
-                visible: screenSize.height > 700,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    BottomBadge(
-                      mainText: 'Mejora tus requerimientos',
-                      secondaryText:
-                          'Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar',
-                      iconRoute: 'assets/images/note.png',
-                      iconWidth: screenSize.width / 15,
-                      containerWidth: screenSize.width / 5,
-                      lineHeight: screenSize.height / 550,
-                    ),
-                    BottomBadge(
-                      mainText: 'Mejora tus requerimientos',
-                      secondaryText:
-                          'Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar',
-                      iconRoute: 'assets/images/list.png',
-                      iconWidth: screenSize.width / 15,
-                      containerWidth: screenSize.width / 5,
-                      lineHeight: screenSize.height / 550,
-                    ),
-                    BottomBadge(
-                      mainText: 'Mejora tus requerimientos',
-                      secondaryText:
-                          'Mejora tus requerimentos utilizando esta nueva herramienta que te permitirá utilizar',
-                      iconRoute: 'assets/images/time-management.png',
-                      iconWidth: screenSize.width / 15,
-                      containerWidth: screenSize.width / 5,
-                      lineHeight: screenSize.height / 550,
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-        SizedBox(
-          height: 50,
+        Container(
+          padding: EdgeInsets.symmetric(
+              horizontal: screenSize.width / 15,
+              vertical: screenSize.width / 10),
+          width: screenSize.width,
+          height: screenSize.height * .7,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: badgesList.length,
+            separatorBuilder: (BuildContext context, int index) => SizedBox(
+              width: screenSize.width * .13,
+            ),
+            itemBuilder: (context, index) {
+              return Badge(
+                mainText: badgesList[index].mainText,
+                secondaryText: badgesList[index].secondaryText,
+                iconRoute: badgesList[index].iconRoute,
+                iconWidth: badgeIconSize,
+                containerWidth: badgeContainerSize,
+                lineHeight: badgeLineHeight,
+              );
+            },
+          ),
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -152,7 +124,7 @@ class MediumView extends GetView<HomeController> {
             Container(
               padding: EdgeInsets.only(left: screenSize.width * .05),
               width: screenSize.width * .45,
-              child: HomeText(
+              child: BottomText(
                 lineHeight: screenSize.height * .002,
               ),
             ),
@@ -163,7 +135,7 @@ class MediumView extends GetView<HomeController> {
               padding: EdgeInsets.only(
                   right: screenSize.width * .05, top: screenSize.height * .01),
               width: screenSize.width * .45,
-              child: HomeImage(),
+              child: BottomImage(),
             ),
           ],
         ),

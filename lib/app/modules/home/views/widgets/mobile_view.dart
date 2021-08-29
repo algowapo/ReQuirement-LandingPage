@@ -1,91 +1,129 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:landing_page/app/modules/home/controllers/home_controller.dart';
-import 'package:landing_page/utils/helpers/style.dart';
-import 'package:landing_page/utils/widgets/custom_button.dart';
+import 'package:landing_page/app/modules/home/models/badge_model.dart';
+import 'package:landing_page/utils/widgets/badges/badge.dart';
+import 'package:landing_page/utils/widgets/bottom/bottom_image_decoration.dart';
+import 'package:landing_page/utils/widgets/custom_icon_button.dart';
+import 'package:landing_page/utils/widgets/main/main_subtitle.dart';
+import 'package:landing_page/utils/widgets/bottom/bottom_text.dart';
+import 'package:landing_page/utils/widgets/main/main_title.dart';
 
 class MobileView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    double badgeContainerSize = screenSize.width * .5;
+    double badgeIconSize = screenSize.width * .1;
+    double badgeLineHeight = screenSize.width * .003;
+
+    return ListView(
       children: [
+        Container(
+          padding: EdgeInsets.symmetric(vertical: screenSize.height * .05),
+          alignment: Alignment.center,
+          child: MainTitle(
+            fontSize: screenSize.width * .0009,
+          ),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               constraints: BoxConstraints(maxWidth: 450),
               margin: EdgeInsets.symmetric(horizontal: 20),
-              child: RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  children: [
-                    TextSpan(text: 'Lorem ipsum dolor '),
-                    TextSpan(
-                        text: 'sit',
-                        style: GoogleFonts.montserrat(color: active)),
-                    TextSpan(text: ' amet, consectetur '),
-                    TextSpan(
-                        text: 'adipiscing elit.',
-                        style: GoogleFonts.montserrat(color: active)),
-                    TextSpan(text: ' Suspendisse id sapien.'),
-                  ],
-                  style: GoogleFonts.montserrat(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28,
-                  ),
-                ),
+              child: MainSubtitle(
+                fontSize: screenSize.height * .03,
+                isCentered: true,
               ),
             )
           ],
         ),
-        SizedBox(
-          height: 20,
-        ),
         Container(
-          constraints: BoxConstraints(maxWidth: 450),
-          child: Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet eros id ligula semper, et viverra massa imperdiet. Maecenas commodo vestibulum ante, in ultricies diam mattis quis. Cras et purus at justo vestibulum interdum. Nunc dignissim blandit libero, sollicitudin fermentum libero feugiat eget.',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.montserrat(letterSpacing: 1.5, height: 1.5),
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Container(
-          constraints: BoxConstraints(maxWidth: 450),
-          padding: EdgeInsets.all(4),
-          margin: EdgeInsets.symmetric(horizontal: 40),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(40),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black.withOpacity(.1),
-                  offset: Offset(0, 40),
-                  blurRadius: 80),
-            ],
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          padding: EdgeInsets.symmetric(horizontal: screenSize.width / 10),
+          width: screenSize.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                width: screenSize.width / 4,
-                padding: EdgeInsets.only(left: 4),
-                child: TextField(
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.email_outlined),
-                      hintText: 'Email',
-                      border: InputBorder.none),
-                ),
+              SizedBox(
+                height: 40,
               ),
-              CustomButtom(text: 'Get Started')
+              SvgPicture.asset(
+                'assets/images/banner1.svg',
+                width: screenSize.width * .6,
+              ),
             ],
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 40.0, bottom: 40.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomIconButton(
+                icon: Icons.arrow_back,
+                text: 'Empieza ya',
+              )
+            ],
+          ),
+        ),
+        Container(
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: badgesList.length,
+            itemBuilder: (context, index) {
+              return Column(
+                children: [
+                  SizedBox(
+                    height: 50.0,
+                  ),
+                  Center(
+                    child: Badge(
+                      mainText: badgesList[index].mainText,
+                      secondaryText: badgesList[index].secondaryText,
+                      iconRoute: badgesList[index].iconRoute,
+                      iconWidth: badgeIconSize,
+                      containerWidth: badgeContainerSize,
+                      lineHeight: badgeLineHeight,
+                      isCentered: true,
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+        SizedBox(
+          height: 100.0,
+        ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: screenSize.width * .2),
+          width: screenSize.width,
+          child: BottomText(
+            lineHeight: screenSize.height * .002,
+            isCentered: true,
+          ),
+        ),
+        SizedBox(
+          height: screenSize.height * .05,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: screenSize.width * .2),
+          child: Container(
+            child: Image.asset(
+              'assets/images/business-man.jpg',
+              width: screenSize.width * .2,
+              fit: BoxFit.cover,
+            ),
+            decoration: bottomImageDecoration,
+          ),
+        ),
+        SizedBox(
+          height: screenSize.height * .05,
         ),
       ],
     );

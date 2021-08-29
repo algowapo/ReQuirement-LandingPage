@@ -6,9 +6,9 @@ import 'package:landing_page/app/modules/home/views/widgets/medium_view.dart';
 import 'package:landing_page/app/modules/home/views/widgets/mobile_view.dart';
 import 'package:landing_page/utils/helpers/responsive.dart';
 import 'package:landing_page/utils/helpers/style.dart';
-import 'package:landing_page/utils/widgets/drawer.dart';
-import 'package:landing_page/utils/widgets/navbar_desktop.dart';
-import 'package:landing_page/utils/widgets/navbar_mobile.dart';
+import 'package:landing_page/utils/widgets/navbar/drawer.dart';
+import 'package:landing_page/utils/widgets/navbar/navbar_desktop.dart';
+import 'package:landing_page/utils/widgets/navbar/navbar_mobile.dart';
 
 import '../controllers/home_controller.dart';
 

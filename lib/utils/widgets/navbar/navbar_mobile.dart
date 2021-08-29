@@ -15,8 +15,12 @@ PreferredSizeWidget mobileNavBar(GlobalKey<ScaffoldState> key) {
     title: Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text(
-        'Re-Quirement',
-        style: GoogleFonts.tradeWinds(fontSize: 20, color: Colors.black),
+        'ReQuirement',
+        style: GoogleFonts.montserrat(
+          color: Colors.black87,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     ),
     centerTitle: true,
