@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:landing_page/utils/widgets/bottom/bottom_image_decoration.dart';
 
-class HomeImage extends StatelessWidget {
+class BottomImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -17,16 +18,7 @@ class HomeImage extends StatelessWidget {
               height: screenSize.height / 3,
               fit: BoxFit.cover,
             ),
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3), // changes position of shadow
-                ),
-              ],
-            ),
+            decoration: bottomImageDecoration,
           ),
         ],
       ),

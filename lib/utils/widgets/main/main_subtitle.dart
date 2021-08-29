@@ -5,10 +5,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:landing_page/utils/helpers/style.dart';
 
-class HomeSubtitle extends StatelessWidget {
+class MainSubtitle extends StatelessWidget {
+  final bool? isCentered;
+  final double? fontSize;
+
+  const MainSubtitle({Key? key, this.isCentered = false, this.fontSize})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
     return AutoSizeText.rich(
       TextSpan(
         children: [
@@ -39,9 +43,10 @@ class HomeSubtitle extends StatelessWidget {
         ],
         style: GoogleFonts.montserrat(
           fontWeight: FontWeight.normal,
-          fontSize: screenSize.height / 25,
+          fontSize: fontSize,
         ),
       ),
+      textAlign: isCentered! ? TextAlign.center : TextAlign.start,
       stepGranularity: 1,
       maxLines: 3,
     );
