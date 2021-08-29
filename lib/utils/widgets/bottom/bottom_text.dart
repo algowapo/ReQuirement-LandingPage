@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-class HomeText extends StatelessWidget {
+class BottomText extends StatelessWidget {
   final double? lineHeight;
-
-  const HomeText({Key? key, this.lineHeight}) : super(key: key);
+  final bool? isCentered;
+  const BottomText({Key? key, this.lineHeight, this.isCentered = false})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return IntrinsicWidth(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment:
+            isCentered! ? CrossAxisAlignment.center : CrossAxisAlignment.start,
         children: [
           AutoSizeText(
             'Great digital agency since 2010',
@@ -21,6 +23,7 @@ class HomeText extends StatelessWidget {
               fontSize: screenSize.height * .04,
               fontWeight: FontWeight.bold,
             ),
+            textAlign: isCentered! ? TextAlign.center : TextAlign.start,
             minFontSize: 25,
             maxLines: 3,
           ),
@@ -34,6 +37,7 @@ class HomeText extends StatelessWidget {
               fontSize: screenSize.height * .025,
               fontWeight: FontWeight.bold,
             ),
+            textAlign: isCentered! ? TextAlign.center : TextAlign.start,
             maxLines: 3,
           ),
           SizedBox(
@@ -47,6 +51,7 @@ class HomeText extends StatelessWidget {
               color: Color(0xFF99a1ad),
               height: lineHeight,
             ),
+            textAlign: isCentered! ? TextAlign.center : TextAlign.start,
             minFontSize: 14,
             stepGranularity: 1,
             maxLines: 5,
