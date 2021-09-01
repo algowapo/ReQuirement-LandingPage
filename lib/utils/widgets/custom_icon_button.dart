@@ -5,8 +5,10 @@ import 'package:landing_page/utils/helpers/style.dart';
 class CustomIconButton extends StatelessWidget {
   final String? text;
   final IconData? icon;
+  final Function? function;
 
-  const CustomIconButton({Key? key, this.text, this.icon}) : super(key: key);
+  const CustomIconButton({Key? key, this.text, this.icon, this.function})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,9 @@ class CustomIconButton extends StatelessWidget {
         icon: Icon(
           icon!,
         ),
-        onPressed: () {},
+        onPressed: () {
+          function!();
+        },
       ),
     );
   }
