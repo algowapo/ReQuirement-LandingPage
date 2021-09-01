@@ -126,6 +126,7 @@ class MediumView extends GetView<HomeController> {
               width: screenSize.width * .45,
               child: BottomText(
                 lineHeight: screenSize.height * .002,
+                containerWidth: screenSize.width * .45,
               ),
             ),
             SizedBox(

@@ -66,7 +66,7 @@ class MobileView extends GetView<HomeController> {
               CustomIconButton(
                 icon: Icons.arrow_back,
                 text: 'Empieza ya',
-              )
+              ),
             ],
           ),
         ),
@@ -106,6 +106,7 @@ class MobileView extends GetView<HomeController> {
           child: BottomText(
             lineHeight: screenSize.height * .002,
             isCentered: true,
+            containerWidth: screenSize.width,
           ),
         ),
         SizedBox(
