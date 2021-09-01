@@ -125,6 +125,7 @@ class DesktopView extends GetView<HomeController> {
               width: screenSize.width / 2.5,
               child: BottomText(
                 lineHeight: screenSize.height * .0025,
+                containerWidth: screenSize.width / 2.5,
               ),
             ),
             SizedBox(
