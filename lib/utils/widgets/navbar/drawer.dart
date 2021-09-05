@@ -16,9 +16,27 @@ class SideMenu extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/home');
+                },
                 child: Text(
-                  'Pricing',
+                  'Inicio',
+                  style: GoogleFonts.montserrat(
+                    fontSize: 22,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Divider(),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/feedback');
+                },
+                child: Text(
+                  'Ayúdanos a mejorar',
                   style: GoogleFonts.montserrat(
                     fontSize: 22,
                     color: Colors.white,
@@ -32,21 +50,7 @@ class SideMenu extends StatelessWidget {
               InkWell(
                 onTap: () {},
                 child: Text(
-                  'Login',
-                  style: GoogleFonts.montserrat(
-                    fontSize: 22,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                child: Divider(),
-              ),
-              InkWell(
-                onTap: () {},
-                child: Text(
-                  'Register',
+                  'Regístrate',
                   style: GoogleFonts.montserrat(
                     fontSize: 22,
                     color: Colors.white,
