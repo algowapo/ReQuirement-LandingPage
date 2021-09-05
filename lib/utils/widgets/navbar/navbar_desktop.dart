@@ -42,13 +42,15 @@ class NavBar extends StatelessWidget {
                         value ? _isHovering[0] = true : _isHovering[0] = false;
                       },
                       hoverColor: Colors.transparent,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/home');
+                      },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SizedBox(height: 12),
                           Text(
-                            'Pricing',
+                            'Inicio',
                             style: GoogleFonts.montserrat(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -84,13 +86,15 @@ class NavBar extends StatelessWidget {
                         value ? _isHovering[1] = true : _isHovering[1] = false;
                       },
                       hoverColor: Colors.transparent,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, '/feedback');
+                      },
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           SizedBox(height: 12),
                           Text(
-                            'Log In',
+                            'Ayúdanos a Mejorar',
                             style: GoogleFonts.montserrat(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -121,7 +125,7 @@ class NavBar extends StatelessWidget {
                     width: screenSize.width / 20,
                   ),
                   CustomButtom(
-                    text: 'Register',
+                    text: 'Regístrate',
                     function: () {
                       print('button was pressed');
                     },
