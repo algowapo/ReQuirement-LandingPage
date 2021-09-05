@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
   final Size? screenSize;
   final double? height;
   final double? width;
+  final double? maxWidth;
 
   const CustomTextField(
       {Key? key,
@@ -15,7 +16,8 @@ class CustomTextField extends StatelessWidget {
       this.hint,
       this.screenSize,
       this.height,
-      this.width})
+      this.width,
+      this.maxWidth})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class CustomTextField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 5.0),
+            margin: const EdgeInsets.only(left: 5.0, bottom: 5.0),
             child: Text(
               name!,
               style: GoogleFonts.montserrat(
@@ -35,10 +37,13 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(left: screenSize!.width * .008),
-            margin: const EdgeInsets.symmetric(vertical: 15.0),
-            constraints: BoxConstraints(maxWidth: screenSize!.width * .35),
-            height: height != null ? height : screenSize!.height * .05,
+            alignment: Alignment.topLeft,
+            margin: const EdgeInsets.only(bottom: 10.0),
+            padding: EdgeInsets.only(left: 8.0),
+            constraints: BoxConstraints(
+                maxWidth:
+                    maxWidth != null ? maxWidth! : screenSize!.width * .35),
+            height: height != null ? height : null,
             width: width != null ? width : screenSize!.width,
             child: TextField(
               decoration: InputDecoration(
