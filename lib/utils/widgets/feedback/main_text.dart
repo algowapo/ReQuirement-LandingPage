@@ -57,7 +57,7 @@ class MainText extends StatelessWidget {
       ),
       textAlign: isCentered! ? TextAlign.center : TextAlign.start,
       stepGranularity: 1,
-      maxLines: 3,
+      maxLines: 5,
     );
   }
 }
