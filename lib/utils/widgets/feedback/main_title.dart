@@ -5,8 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MainTitle extends StatelessWidget {
   final double? fontSize;
+  final bool? isCentered;
 
-  const MainTitle({Key? key, this.fontSize}) : super(key: key);
+  const MainTitle({Key? key, this.fontSize, this.isCentered = false})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AutoSizeText(
@@ -16,9 +18,10 @@ class MainTitle extends StatelessWidget {
         fontSize: fontSize,
         fontWeight: FontWeight.bold,
       ),
+      textAlign: isCentered! ? TextAlign.center : TextAlign.start,
       minFontSize: 40,
       stepGranularity: 1,
-      maxLines: 1,
+      maxLines: 2,
     );
   }
 }
