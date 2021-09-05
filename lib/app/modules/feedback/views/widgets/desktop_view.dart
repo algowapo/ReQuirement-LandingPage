@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:landing_page/app/modules/feedback/controllers/feedback_controller.dart';
-import 'package:landing_page/utils/helpers/style.dart';
 import 'package:landing_page/utils/widgets/custom_icon_button.dart';
 import 'package:landing_page/utils/widgets/feedback/custom_text_field.dart';
 import 'package:landing_page/utils/widgets/feedback/main_text.dart';
@@ -121,7 +119,7 @@ class DesktopView extends GetView<FeedbackController> {
                         name: 'Edad',
                         hint: '18',
                         screenSize: screenSize,
-                        width: screenSize.height * .05,
+                        width: screenSize.height * .06,
                       ),
                       SizedBox(
                         width: screenSize.width * .01,
@@ -139,7 +137,7 @@ class DesktopView extends GetView<FeedbackController> {
                         name: 'Distrito',
                         hint: 'Santiago de Surco',
                         screenSize: screenSize,
-                        width: screenSize.width * .1,
+                        width: screenSize.width * .15,
                       ),
                     ],
                   ),
