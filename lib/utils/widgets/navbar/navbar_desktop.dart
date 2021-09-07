@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:landing_page/utils/helpers/style.dart';
 import 'package:landing_page/utils/widgets/custom_button.dart';
+import 'package:landing_page/utils/widgets/custom_icon_button.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NavBar extends StatelessWidget {
   NavBar({Key? key}) : super(key: key);
@@ -124,11 +126,10 @@ class NavBar extends StatelessWidget {
                   SizedBox(
                     width: screenSize.width / 20,
                   ),
-                  CustomButtom(
+                  CustomIconButton(
+                    icon: Icons.person,
                     text: 'Regístrate',
-                    function: () {
-                      print('button was pressed');
-                    },
+                    function: _launchURL,
                   ),
                   SizedBox(
                     width: screenSize.width / 40,
@@ -142,3 +143,8 @@ class NavBar extends StatelessWidget {
     );
   }
 }
+
+const _url = 'https://flutter.dev';
+
+void _launchURL() async =>
+    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
