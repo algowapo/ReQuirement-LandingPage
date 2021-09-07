@@ -7,6 +7,7 @@ import 'app/routes/app_pages.dart';
 void main() {
   runApp(
     GetMaterialApp(
+      defaultTransition: Transition.fadeIn,
       debugShowCheckedModeBanner: false,
       title: 'ReQuirement - Landing Page',
       initialRoute: AppPages.INITIAL,
