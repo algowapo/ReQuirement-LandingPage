@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:landing_page/utils/helpers/style.dart';
 import 'package:landing_page/utils/widgets/custom_icon_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -38,8 +39,8 @@ class BottomText extends StatelessWidget {
             'Inscríbete al waitlist para ser de los primeros en probar ReQuirement',
             style: GoogleFonts.montserrat(
               color: Color(0xFF99a1ad),
-              fontSize: screenSize.height * .025,
-              fontWeight: FontWeight.w500,
+              fontSize: screenSize.height * .02,
+              fontWeight: FontWeight.w400,
             ),
             textAlign: isCentered! ? TextAlign.center : TextAlign.start,
             maxLines: 3,
@@ -52,14 +53,8 @@ class BottomText extends StatelessWidget {
             constraints: BoxConstraints(maxWidth: containerWidth!),
             padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
-              color: Colors.white,
               borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black.withOpacity(.1),
-                    offset: Offset(0, 40),
-                    blurRadius: 80),
-              ],
+              border: Border.all(color: gray),
             ),
             child: SizedBox(
               width: containerWidth!,
@@ -75,16 +70,34 @@ class BottomText extends StatelessWidget {
                           icon: Icon(
                             Icons.email_outlined,
                           ),
+                          hintStyle: GoogleFonts.montserrat(
+                            color: gray,
+                            fontWeight: FontWeight.w300,
+                          ),
                           hintText: 'Email',
                           border: InputBorder.none,
                         ),
                       ),
                     ),
                     Container(
-                      child: CustomIconButton(
-                        icon: Icons.arrow_back,
-                        text: 'Empieza ya',
-                        function: _launchURL,
+                      child: Ink(
+                        decoration: const ShapeDecoration(
+                          shape: CircleBorder(),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(Icons.arrow_forward),
+                          tooltip: 'Empieza ya',
+                          color: Colors.white,
+                          onPressed: () {
+                            _launchURL();
+                          },
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        color: active,
+                        borderRadius: BorderRadius.circular(
+                          10,
+                        ),
                       ),
                     ),
                   ],
