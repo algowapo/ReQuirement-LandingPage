@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:landing_page/utils/helpers/style.dart';
-import 'package:landing_page/utils/widgets/custom_button.dart';
 import 'package:landing_page/utils/widgets/custom_icon_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NavBar extends StatelessWidget {
   NavBar({Key? key}) : super(key: key);
 
-  final _isHovering = [false, false].obs;
+  final _isHovering = [false, false, false].obs;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class NavBar extends StatelessWidget {
     return PreferredSize(
       preferredSize: Size(screenSize.width, 1000),
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -36,7 +35,7 @@ class NavBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SizedBox(
-                    width: screenSize.width / 8,
+                    width: screenSize.width / 50,
                   ),
                   Obx(
                     () => InkWell(
@@ -71,8 +70,9 @@ class NavBar extends StatelessWidget {
                               height: 7,
                               width: 7,
                               decoration: BoxDecoration(
-                                  color: active,
-                                  borderRadius: BorderRadius.circular(20)),
+                                color: active,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
                             ),
                           ),
                         ],
@@ -80,7 +80,7 @@ class NavBar extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: screenSize.width / 20,
+                    width: screenSize.width / 30,
                   ),
                   Obx(
                     () => InkWell(
@@ -115,8 +115,9 @@ class NavBar extends StatelessWidget {
                               height: 7,
                               width: 7,
                               decoration: BoxDecoration(
-                                  color: active,
-                                  borderRadius: BorderRadius.circular(20)),
+                                color: active,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
                             ),
                           ),
                         ],
@@ -124,16 +125,63 @@ class NavBar extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: screenSize.width / 20,
+                    width: screenSize.width / 30,
+                  ),
+                  Obx(
+                    () => InkWell(
+                      onHover: (value) {
+                        value ? _isHovering[2] = true : _isHovering[2] = false;
+                      },
+                      hoverColor: Colors.transparent,
+                      onTap: () {
+                        _launchURL('https://requirementwebapp.web.app/#/login');
+                      },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(height: 12),
+                          Text(
+                            'Inicia Sesión',
+                            style: GoogleFonts.montserrat(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: _isHovering[2] ? active : disable,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Visibility(
+                            visible: _isHovering[2],
+                            maintainAnimation: true,
+                            maintainState: true,
+                            maintainSize: true,
+                            child: Container(
+                              height: 7,
+                              width: 7,
+                              decoration: BoxDecoration(
+                                color: active,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: screenSize.width / 30,
                   ),
                   CustomIconButton(
                     icon: Icons.person,
                     text: 'Regístrate',
-                    function: _launchURL,
+                    function: () {
+                      _launchURL('https://requirementwebapp.web.app/#/signin');
+                    },
                   ),
                   SizedBox(
                     width: screenSize.width / 40,
-                  )
+                  ),
                 ],
               ),
             ),
@@ -144,7 +192,5 @@ class NavBar extends StatelessWidget {
   }
 }
 
-const _url = 'https://flutter.dev';
-
-void _launchURL() async =>
+void _launchURL(_url) async =>
     await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:landing_page/utils/helpers/style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({Key? key}) : super(key: key);
@@ -48,7 +49,25 @@ class SideMenu extends StatelessWidget {
                 child: Divider(),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  _launchURL('https://requirementwebapp.web.app/#/login');
+                },
+                child: Text(
+                  'Inicia Sesión',
+                  style: GoogleFonts.montserrat(
+                    fontSize: 22,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Divider(),
+              ),
+              InkWell(
+                onTap: () {
+                  _launchURL('https://requirementwebapp.web.app/#/signin');
+                },
                 child: Text(
                   'Regístrate',
                   style: GoogleFonts.montserrat(
@@ -72,3 +91,6 @@ class SideMenu extends StatelessWidget {
     );
   }
 }
+
+void _launchURL(_url) async =>
+    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
