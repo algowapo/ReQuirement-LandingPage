@@ -11,6 +11,7 @@ import 'package:landing_page/utils/widgets/bottom/bottom_image.dart';
 import 'package:landing_page/utils/widgets/main/main_subtitle.dart';
 import 'package:landing_page/utils/widgets/bottom/bottom_text.dart';
 import 'package:landing_page/utils/widgets/main/main_title.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DesktopView extends GetView<HomeController> {
   @override
@@ -63,6 +64,9 @@ class DesktopView extends GetView<HomeController> {
                           CustomIconButton(
                             icon: Icons.arrow_back,
                             text: 'Empieza ya',
+                            function: () {
+                              _launchURL();
+                            },
                           )
                         ],
                       ),
@@ -145,3 +149,8 @@ class DesktopView extends GetView<HomeController> {
     );
   }
 }
+
+const _url = 'https://requirementwebapp.web.app/#/signin';
+
+void _launchURL() async =>
+    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
