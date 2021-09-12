@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -9,8 +10,17 @@ import 'package:landing_page/utils/widgets/feedback/main_title.dart';
 import 'package:landing_page/utils/widgets/feedback/subtitle.dart';
 
 class MediumView extends GetView<FeedbackController> {
+  final firstnameController = TextEditingController();
+  final lastnameController = TextEditingController();
+  final ageController = TextEditingController();
+  final genderController = TextEditingController();
+  final cityController = TextEditingController();
+  final emailController = TextEditingController();
+  final feedbackController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    CollectionReference reQuirementUsers =
+        FirebaseFirestore.instance.collection('users');
     var screenSize = MediaQuery.of(context).size;
     return Container(
       constraints: BoxConstraints(maxWidth: screenSize.width),
@@ -96,6 +106,7 @@ class MediumView extends GetView<FeedbackController> {
                         screenSize: screenSize,
                         maxWidth: screenSize.width,
                         width: screenSize.width * .5,
+                        controller: firstnameController,
                       ),
                     ],
                   ),
@@ -111,6 +122,7 @@ class MediumView extends GetView<FeedbackController> {
                         screenSize: screenSize,
                         maxWidth: screenSize.width,
                         width: screenSize.width * .5,
+                        controller: lastnameController,
                       ),
                     ],
                   ),
@@ -125,6 +137,7 @@ class MediumView extends GetView<FeedbackController> {
                         hint: '18',
                         screenSize: screenSize,
                         width: screenSize.height * .06,
+                        controller: ageController,
                       ),
                       SizedBox(
                         width: screenSize.width * .01,
@@ -134,6 +147,7 @@ class MediumView extends GetView<FeedbackController> {
                         hint: 'Masculino',
                         screenSize: screenSize,
                         width: screenSize.width * .15,
+                        controller: genderController,
                       ),
                       SizedBox(
                         width: screenSize.width * .01,
@@ -143,6 +157,7 @@ class MediumView extends GetView<FeedbackController> {
                         hint: 'Santiago de Surco',
                         screenSize: screenSize,
                         width: screenSize.width * .2,
+                        controller: cityController,
                       ),
                     ],
                   ),
@@ -158,6 +173,7 @@ class MediumView extends GetView<FeedbackController> {
                         screenSize: screenSize,
                         maxWidth: screenSize.width,
                         width: screenSize.width * .5,
+                        controller: emailController,
                       ),
                     ],
                   ),
@@ -174,6 +190,7 @@ class MediumView extends GetView<FeedbackController> {
                         height: screenSize.height * .2,
                         maxWidth: screenSize.width,
                         width: screenSize.width * .5,
+                        controller: feedbackController,
                       ),
                     ],
                   ),
@@ -186,7 +203,17 @@ class MediumView extends GetView<FeedbackController> {
                       CustomIconButton(
                         text: 'Enviar',
                         icon: Icons.arrow_back,
-                        function: () {},
+                        function: () {
+                          reQuirementUsers.add({
+                            'firstname': firstnameController.text,
+                            'lastname': lastnameController.text,
+                            'city': cityController.text,
+                            'age': int.parse(ageController.text),
+                            'email': emailController.text,
+                            'gender': genderController.text,
+                            'feedback': feedbackController.text,
+                          });
+                        },
                       ),
                     ],
                   ),

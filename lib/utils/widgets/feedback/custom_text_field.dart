@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final double? height;
   final double? width;
   final double? maxWidth;
+  final TextEditingController? controller;
 
   const CustomTextField(
       {Key? key,
@@ -17,7 +18,8 @@ class CustomTextField extends StatelessWidget {
       this.screenSize,
       this.height,
       this.width,
-      this.maxWidth})
+      this.maxWidth,
+      this.controller})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,7 @@ class CustomTextField extends StatelessWidget {
                 ),
                 border: InputBorder.none,
               ),
+              controller: controller,
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
