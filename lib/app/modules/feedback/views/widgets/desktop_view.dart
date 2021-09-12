@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -9,8 +10,19 @@ import 'package:landing_page/utils/widgets/feedback/main_title.dart';
 import 'package:landing_page/utils/widgets/feedback/subtitle.dart';
 
 class DesktopView extends GetView<FeedbackController> {
+  final firstnameController = TextEditingController();
+  final lastnameController = TextEditingController();
+  final ageController = TextEditingController();
+  final genderController = TextEditingController();
+  final cityController = TextEditingController();
+  final emailController = TextEditingController();
+  final feedbackController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    CollectionReference reQuirementUsers =
+        FirebaseFirestore.instance.collection('users');
+
     var screenSize = MediaQuery.of(context).size;
     return Container(
       constraints: BoxConstraints(maxWidth: screenSize.width),
@@ -93,6 +105,7 @@ class DesktopView extends GetView<FeedbackController> {
                         name: 'Nombre',
                         hint: 'Marco',
                         screenSize: screenSize,
+                        controller: firstnameController,
                       ),
                     ],
                   ),
@@ -106,6 +119,7 @@ class DesktopView extends GetView<FeedbackController> {
                         name: 'Apellido',
                         hint: 'Herrera',
                         screenSize: screenSize,
+                        controller: lastnameController,
                       ),
                     ],
                   ),
@@ -120,6 +134,7 @@ class DesktopView extends GetView<FeedbackController> {
                         hint: '18',
                         screenSize: screenSize,
                         width: screenSize.height * .06,
+                        controller: ageController,
                       ),
                       SizedBox(
                         width: screenSize.width * .01,
@@ -129,6 +144,7 @@ class DesktopView extends GetView<FeedbackController> {
                         hint: 'Masculino',
                         screenSize: screenSize,
                         width: screenSize.width * .1,
+                        controller: genderController,
                       ),
                       SizedBox(
                         width: screenSize.width * .01,
@@ -138,6 +154,7 @@ class DesktopView extends GetView<FeedbackController> {
                         hint: 'Santiago de Surco',
                         screenSize: screenSize,
                         width: screenSize.width * .15,
+                        controller: cityController,
                       ),
                     ],
                   ),
@@ -151,6 +168,7 @@ class DesktopView extends GetView<FeedbackController> {
                         name: 'Correo',
                         hint: 'marco@gmail.com',
                         screenSize: screenSize,
+                        controller: emailController,
                       ),
                     ],
                   ),
@@ -165,6 +183,7 @@ class DesktopView extends GetView<FeedbackController> {
                         hint: 'Escribe aquí tu feedback',
                         screenSize: screenSize,
                         height: screenSize.height * .2,
+                        controller: feedbackController,
                       ),
                     ],
                   ),
@@ -177,7 +196,17 @@ class DesktopView extends GetView<FeedbackController> {
                       CustomIconButton(
                         text: 'Enviar',
                         icon: Icons.arrow_back,
-                        function: () {},
+                        function: () {
+                          reQuirementUsers.add({
+                            'firstname': firstnameController.text,
+                            'lastname': lastnameController.text,
+                            'city': cityController.text,
+                            'age': int.parse(ageController.text),
+                            'email': emailController.text,
+                            'gender': genderController.text,
+                            'feedback': feedbackController.text,
+                          });
+                        },
                       ),
                     ],
                   ),
