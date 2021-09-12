@@ -17,6 +17,29 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+
+  <!-- Add for Firebase Storage: https://pub.dev/packages/firebase_storage -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-storage.js"></script>
+  
+  <!-- Add for Cloud Firestore: https://pub.dev/packages/cloud_firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyC1Q7GKCxzLemJcQ9S1R15l63X-7SQQ7tc",
+      authDomain: "requirementlandingpage.firebaseapp.com",
+      projectId: "requirementlandingpage",
+      storageBucket: "requirementlandingpage.appspot.com",
+      messagingSenderId: "559500357958",
+      appId: "1:559500357958:web:7b06b86d104f7d26d47547",
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
   <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;
