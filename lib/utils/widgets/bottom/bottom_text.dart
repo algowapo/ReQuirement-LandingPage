@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:landing_page/utils/helpers/style.dart';
-import 'package:landing_page/utils/widgets/custom_icon_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BottomText extends StatelessWidget {
