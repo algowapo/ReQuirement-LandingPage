@@ -1,15 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:landing_page/app/modules/feedback/controllers/feedback_controller.dart';
+import 'package:landing_page/utils/helpers/validators.dart';
 import 'package:landing_page/utils/widgets/custom_icon_button.dart';
 import 'package:landing_page/utils/widgets/feedback/custom_text_field.dart';
 import 'package:landing_page/utils/widgets/feedback/main_text.dart';
 import 'package:landing_page/utils/widgets/feedback/main_title.dart';
 import 'package:landing_page/utils/widgets/feedback/subtitle.dart';
 
-class MediumView extends GetView<FeedbackController> {
+class MediumView extends StatefulWidget {
+  @override
+  _MediumViewState createState() => _MediumViewState();
+}
+
+class _MediumViewState extends State<MediumView> {
   final firstnameController = TextEditingController();
   final lastnameController = TextEditingController();
   final ageController = TextEditingController();
@@ -17,6 +21,14 @@ class MediumView extends GetView<FeedbackController> {
   final cityController = TextEditingController();
   final emailController = TextEditingController();
   final feedbackController = TextEditingController();
+  var validateEmail = false;
+  var validateFirstName = false;
+  var validateLastName = false;
+  var validateAge = false;
+  var validateGender = false;
+  var validateCity = false;
+  var validateFeedback = false;
+
   @override
   Widget build(BuildContext context) {
     CollectionReference reQuirementUsers =
@@ -107,6 +119,8 @@ class MediumView extends GetView<FeedbackController> {
                         maxWidth: screenSize.width,
                         width: screenSize.width * .5,
                         controller: firstnameController,
+                        validate: validateFirstName,
+                        errorText: 'Nombre inválido',
                       ),
                     ],
                   ),
@@ -123,6 +137,8 @@ class MediumView extends GetView<FeedbackController> {
                         maxWidth: screenSize.width,
                         width: screenSize.width * .5,
                         controller: lastnameController,
+                        validate: validateLastName,
+                        errorText: 'Apellido inválido',
                       ),
                     ],
                   ),
@@ -131,6 +147,7 @@ class MediumView extends GetView<FeedbackController> {
                   margin:
                       EdgeInsets.symmetric(horizontal: screenSize.width * .25),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextField(
                         name: 'Edad',
@@ -138,6 +155,8 @@ class MediumView extends GetView<FeedbackController> {
                         screenSize: screenSize,
                         width: screenSize.height * .06,
                         controller: ageController,
+                        validate: validateAge,
+                        errorText: 'Edad inválida',
                       ),
                       SizedBox(
                         width: screenSize.width * .01,
@@ -148,6 +167,8 @@ class MediumView extends GetView<FeedbackController> {
                         screenSize: screenSize,
                         width: screenSize.width * .15,
                         controller: genderController,
+                        validate: validateGender,
+                        errorText: 'Género inválido',
                       ),
                       SizedBox(
                         width: screenSize.width * .01,
@@ -158,6 +179,8 @@ class MediumView extends GetView<FeedbackController> {
                         screenSize: screenSize,
                         width: screenSize.width * .2,
                         controller: cityController,
+                        validate: validateCity,
+                        errorText: 'Ciudad inválida',
                       ),
                     ],
                   ),
@@ -174,6 +197,8 @@ class MediumView extends GetView<FeedbackController> {
                         maxWidth: screenSize.width,
                         width: screenSize.width * .5,
                         controller: emailController,
+                        validate: validateEmail,
+                        errorText: 'Correo inválido',
                       ),
                     ],
                   ),
@@ -191,6 +216,8 @@ class MediumView extends GetView<FeedbackController> {
                         maxWidth: screenSize.width,
                         width: screenSize.width * .5,
                         controller: feedbackController,
+                        validate: validateFeedback,
+                        errorText: 'Feedback inválido',
                       ),
                     ],
                   ),
@@ -204,15 +231,46 @@ class MediumView extends GetView<FeedbackController> {
                         text: 'Enviar',
                         icon: Icons.arrow_back,
                         function: () {
-                          reQuirementUsers.add({
-                            'firstname': firstnameController.text,
-                            'lastname': lastnameController.text,
-                            'city': cityController.text,
-                            'age': int.parse(ageController.text),
-                            'email': emailController.text,
-                            'gender': genderController.text,
-                            'feedback': feedbackController.text,
+                          setState(() {
+                            validateEmail = !isEmailValid(emailController.text);
+                            validateFirstName =
+                                isFieldEmpty(firstnameController.text);
+                            validateLastName =
+                                isFieldEmpty(lastnameController.text);
+                            validateCity = isFieldEmpty(cityController.text);
+                            validateAge = !isNumber(ageController.text);
+                            validateGender =
+                                isFieldEmpty(genderController.text);
+                            validateFeedback =
+                                isFieldEmpty(feedbackController.text);
                           });
+                          if (allFieldsAreValid(
+                              !validateEmail,
+                              !validateFirstName,
+                              !validateLastName,
+                              !validateCity,
+                              !validateAge,
+                              !validateGender,
+                              !validateFeedback)) {
+                            reQuirementUsers.add({
+                              'firstname': firstnameController.text,
+                              'lastname': lastnameController.text,
+                              'city': cityController.text,
+                              'age': int.parse(ageController.text),
+                              'email': emailController.text,
+                              'gender': genderController.text,
+                              'feedback': feedbackController.text,
+                            });
+                            setState(() {
+                              firstnameController.text = '';
+                              lastnameController.text = '';
+                              cityController.text = '';
+                              ageController.text = '';
+                              emailController.text = '';
+                              genderController.text = '';
+                              feedbackController.text = '';
+                            });
+                          }
                         },
                       ),
                     ],
