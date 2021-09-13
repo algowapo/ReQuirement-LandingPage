@@ -10,6 +10,8 @@ class CustomTextField extends StatelessWidget {
   final double? width;
   final double? maxWidth;
   final TextEditingController? controller;
+  final bool? validate;
+  final String? errorText;
 
   const CustomTextField(
       {Key? key,
@@ -19,7 +21,9 @@ class CustomTextField extends StatelessWidget {
       this.height,
       this.width,
       this.maxWidth,
-      this.controller})
+      this.controller,
+      this.validate = false,
+      this.errorText})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -63,6 +67,18 @@ class CustomTextField extends StatelessWidget {
               border: Border.all(color: gray),
             ),
           ),
+          validate == true
+              ? Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.only(bottom: 10.0),
+                  child: Text(
+                    errorText!,
+                    style: GoogleFonts.montserrat(
+                      color: Colors.red,
+                    ),
+                  ),
+                )
+              : Container(),
         ],
       ),
     );
